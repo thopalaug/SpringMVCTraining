@@ -4,7 +4,8 @@
     </head>
 
     <body>
-        <h1>Hello World, this is a welcome</h1>
+        <h1>Hello ${user}, this is a welcome message</h1>
+        <p>${welcomeMessage}</p>
     </body>
 
 </html>
