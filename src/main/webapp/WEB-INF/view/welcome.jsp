@@ -4,7 +4,8 @@
     </head>
 
     <body>
-        <h1>Hello ${user}, this is a welcome message</h1>
+        <h1>${helloMessage}, this is a welcome message</h1>
+        <h2>age parameter is ${age}</h2>
         <p>${welcomeMessage}</p>
     </body>
 
