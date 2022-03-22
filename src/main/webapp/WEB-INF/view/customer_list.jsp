@@ -15,7 +15,7 @@
                     <th>Customer Name</th>
                 </tr>
 
-                <c:forEach var="customer" items="${customerData.listOfCustomers}">
+                <c:forEach var="customer" items="${customerData.customers}">
 
                     <tr>
                         <td><c:out value="${customer.customer_id}"/></td>

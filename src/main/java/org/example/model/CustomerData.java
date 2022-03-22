@@ -10,7 +10,7 @@ public class CustomerData {
 
     private static int id_value = 1;
 
-    private final List<Customer> listOfCustomers = new ArrayList<>();
+    private final List<Customer> customers = new ArrayList<>();
 
     public CustomerData() {
         addCustomer(new Customer("Per"));
@@ -22,12 +22,12 @@ public class CustomerData {
 
     public void addCustomer(@NonNull Customer customer){
         customer.setCustomer_id(id_value);
-        listOfCustomers.add(customer);
+        customers.add(customer);
         id_value++;
     }
 
     public Customer getCustomer(int customer_id){
-        for (Customer customer: listOfCustomers
+        for (Customer customer: customers
              ) { if(customer.getCustomer_id() == customer_id)
                  return customer;
         }
@@ -35,7 +35,7 @@ public class CustomerData {
     }
 
     public List<Customer> getCustomers(){
-        return Collections.unmodifiableList(listOfCustomers);
+        return Collections.unmodifiableList(customers);
     }
 
 
