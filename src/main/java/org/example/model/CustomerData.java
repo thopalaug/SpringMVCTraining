@@ -5,6 +5,7 @@ import lombok.NonNull;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.ListIterator;
 
 public class CustomerData {
 
@@ -38,5 +39,29 @@ public class CustomerData {
         return Collections.unmodifiableList(customers);
     }
 
+    public void removeCustomer(int id){
+        ListIterator<Customer> customerListIterator = customers.listIterator();
 
+        while(customerListIterator.hasNext()){
+            Customer customer = customerListIterator.next();
+
+            if(customer.getCustomer_id() == id){
+                customerListIterator.remove();
+                break;
+            }
+        }
+    }
+
+    public void updateCustomer(@NonNull Customer customerToUpdate){
+        ListIterator<Customer> customerListIterator = customers.listIterator();
+
+        while(customerListIterator.hasNext()){
+            Customer customer = customerListIterator.next();
+
+            if(customer.equals(customerToUpdate)){
+                customerListIterator.set(customerToUpdate);
+                break;
+            }
+        }
+    }
 }

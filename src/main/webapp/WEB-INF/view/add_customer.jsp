@@ -4,28 +4,20 @@
 
 <html>
     <head>
-        <title>Add Items</title>
+        <title>Add Customer</title>
     </head>
 
     <body>
         <div align="center">
-            <form:form method="POST" modelAttribute="${AttributeNames.TODO_ITEM}">
+            <form:form method="POST" modelAttribute="${AttributeNames.CUSTOMER}">
                 <table>
                     <tr>
                         <td><label>ID</label></td>
-                        <td><form:input path="id" disabled="true" /></td>
+                        <td><form:input path="customer_id" disabled="true" /></td>
                     </tr>
                     <tr>
-                        <td><label>Title</label></td>
-                        <td><form:input path="title" /></td>
-                    </tr>
-                    <tr>
-                        <td><label>Deadline</label></td>
-                        <td><form:input path="deadline" /></td>
-                    </tr>
-                    <tr>
-                        <td><label>Details</label></td>
-                        <td><form:textarea path="details" /></td>
+                        <td><label>Name</label></td>
+                        <td><form:input path="customer_name" /></td>
                     </tr>
                     <tr>
                         <td><label>Submit</label></td>

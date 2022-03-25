@@ -24,4 +24,14 @@ public class CustomerServiceImpl implements CustomerService {
     public CustomerData getData() {
         return customerData;
     }
+
+    @Override
+    public void deleteCustomer(int id) {
+        customerData.removeCustomer(id);
+    }
+
+    @Override
+    public Customer updateCustomer(Customer customer) {
+        return null;
+    }
 }
