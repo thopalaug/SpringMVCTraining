@@ -57,4 +57,9 @@ public class CustomerController {
         return "redirect:/" + Mappings.CUSTOMER;
     }
 
+    @GetMapping(Mappings.HOME)
+    public String home(){
+        return ViewNames.HOME;
+    }
+
 }

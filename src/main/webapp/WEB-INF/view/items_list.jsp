@@ -10,6 +10,8 @@
             <c:url var="addUrl" value="${Mappings.ADD_ITEM}"/>
             <a href="${addUrl}">New Item</a>
 
+            <c:url var="homeUrl" value="${Mappings.HOME}"/>
+            <a href="${homeUrl}">Home</a>
 
             <table border="1" cellpadding="5">
 

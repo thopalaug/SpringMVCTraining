@@ -7,6 +7,8 @@ public final class Mappings {
     public static final String ADD_ITEM = "addItem";
     public static final String DELETE_ITEM = "deleteItem";
 
+    public static final String HOME = "home";
+
     public static final String CUSTOMER = "customer";
     public static final String ADD_CUSTOMER = "addCustomer";
     public static final String DELETE_CUSTOMER = "deleteCustomer";
