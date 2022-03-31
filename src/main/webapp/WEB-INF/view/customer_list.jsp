@@ -21,9 +21,20 @@
                 <tr>
                     <th>Customer Id</th>
                     <th>Customer Name</th>
+                    <th>View Customer</th>
+                    <th>Edit Customer</th>
+                    <th>Delete</th>
                 </tr>
 
                 <c:forEach var="customer" items="${customerData.customers}">
+
+                    <c:url var="viewUrl" value="${Mappings.VIEW_CUSTOMER}">
+                        <c:param name="customer_id" value="${customer.customer_id}"/>
+                    </c:url>
+
+                    <c:url var="editUrl" value="${Mappings.ADD_CUSTOMER}">
+                        <c:param name="customer_id" value="${customer.customer_id}"/>
+                    </c:url>
 
                     <c:url var="deleteUrl" value="${Mappings.DELETE_CUSTOMER}">
                         <c:param name="customer_id" value="${customer.customer_id}"/>
@@ -33,6 +44,8 @@
                     <tr>
                         <td><c:out value="${customer.customer_id}"/></td>
                         <td><c:out value="${customer.customer_name}"/></td>
+                        <td><a href="${viewUrl}">View Customer</a></td>
+                        <td><a href="${editUrl}">Edit Customer</a></td>
                         <td><a href="${deleteUrl}">Delete Customer</a></td>
                     </tr>
 

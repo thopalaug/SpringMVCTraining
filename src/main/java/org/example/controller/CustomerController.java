@@ -39,16 +39,32 @@ public class CustomerController {
     }
 
     @GetMapping(Mappings.ADD_CUSTOMER)
-    public String addEditCustomer(Model model){
-        Customer customer = new Customer("");
+    public String addEditCustomer(@RequestParam(required = false, defaultValue = "-1") int customer_id,
+                                              Model model){
+        Customer customer = customerService.getCustomer(customer_id);
+        if(customer == null){
+            customer = new Customer("");
+        }
         model.addAttribute(AttributeNames.CUSTOMER, customer);
         return ViewNames.ADD_CUSTOMER;
     }
 
     @PostMapping(Mappings.ADD_CUSTOMER)
     public String addCustomer(@ModelAttribute(AttributeNames.CUSTOMER) Customer customer){
-        customerService.addCustomer(customer);
+        if(customer.getCustomer_id() == 0){
+            customerService.addCustomer(customer);
+        }else{
+            customerService.updateCustomer(customer);
+        }
         return "redirect:/" + Mappings.CUSTOMER;
+    }
+
+
+    @GetMapping(Mappings.VIEW_CUSTOMER)
+    public String viewCustomer(@RequestParam int customer_id, Model model){
+        Customer customer = customerService.getCustomer(customer_id);
+        model.addAttribute(AttributeNames.CUSTOMER, customer);
+        return ViewNames.VIEW_CUSTOMER;
     }
 
     @GetMapping(Mappings.DELETE_CUSTOMER)

@@ -1,8 +1,10 @@
 package org.example.model;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 @Data
+@EqualsAndHashCode(of = "customer_id")
 public class Customer {
 
     private int customer_id;

@@ -41,8 +41,12 @@ public class TodoItemController {
     }
 
     @GetMapping(Mappings.ADD_ITEM)
-    public String addEditItem(Model model){
-        TodoItem todoItem = new TodoItem("","", LocalDate.now());
+    public String addEditItem(@RequestParam(required = false, defaultValue = "-1") int id,
+                              Model model){
+        TodoItem todoItem = todoItemService.getItem(id);
+        if(todoItem == null){
+            todoItem = new TodoItem("","", LocalDate.now());
+        }
         model.addAttribute(AttributeNames.TODO_ITEM, todoItem);
         return ViewNames.ADD_ITEM;
     }
@@ -50,9 +54,22 @@ public class TodoItemController {
     // Bruker ikke en egen view fordi den redirecter tilbake til items.
     @PostMapping(Mappings.ADD_ITEM)
     public String processItem(@ModelAttribute(AttributeNames.TODO_ITEM) TodoItem todoItem){
-        todoItemService.addItem(todoItem);
+        if(todoItem.getId() == 0){
+            todoItemService.addItem(todoItem);
+        }else{
+            todoItemService.updateItem(todoItem);
+        }
         return "redirect:/" + Mappings.ITEMS;
     }
+
+    @GetMapping(Mappings.VIEW_ITEM)
+    public String viewItem(@RequestParam int id, Model model){
+        TodoItem todoItem = todoItemService.getItem(id);
+        model.addAttribute(AttributeNames.TODO_ITEM, todoItem);
+        return ViewNames.VIEW_ITEM;
+    }
+
+
 
     @GetMapping(Mappings.DELETE_ITEM)
     public String deleteItem(@RequestParam int id){

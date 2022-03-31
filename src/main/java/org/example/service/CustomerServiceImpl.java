@@ -31,7 +31,7 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public Customer updateCustomer(Customer customer) {
-        return null;
+    public void updateCustomer(Customer customer) {
+        customerData.updateCustomer(customer);
     }
 }
